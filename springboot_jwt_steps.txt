@@ -1,0 +1,692 @@
+## mysql create table
+
+CREATE TABLE `login_user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `roles` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+## project build
+
+	maven clean install
+	
+	ensure  target\spring-boot-security-jwt.jar   (jar file is succuessfully crated)
+	
+## run SpringBoot Application
+
+   java -jar  spring-boot-security-jwt.jar
+   
+ 
+
+## Postman testing
+
+	http://localhost:8080/api/jwt/addLoginUser
+	
+	method :post
+	
+	sample payload1
+	body
+	
+	{
+		"name":"testuser",
+		"email":"testser@gmail.com",
+		"password":"Pwd123",
+		"roles":"ROLE_USER"
+
+	}
+	
+	sample payload2
+	body
+	
+	{
+		"name":"uatuser",
+		"email":"uatuser@gmail.com",
+		"password":"Pwd123",
+		"roles":"ROLE_ADMIN"
+
+	}
+	
+	
+	
+ http://localhost:8080/api/jwt/authenticateAndGetToken
+  
+  method :post
+  
+	{
+		"username":"testuser",
+		"password":"Pwd123"
+
+	}
+	  
+	  
+	  response
+	  
+	 {
+		"user": "tempuser",
+		"access_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZW1wdXNlciIsImlhdCI6MTc3Njg4MjcyMSwiZXhwIjoxNzc2ODg0NTIxfQ.mJ2-8Axi_SSb6JUMDwrZBzQh493Zp1WmsSN2qz9gCUc",
+		"issuedAt": "2026-04-22T18:32:01.683+00:00"
+	 }
+	 
+	 
+	 
+	 
+	http://localhost:8080/api/products/allProucts	 
+	
+	method :GET
+	
+	Authorization : Bearer Token 
+	
+	
+	Token :eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZW1wdXNlciIsImlhdCI6MTc3Njg4MjcyMSwiZXhwIjoxNzc2ODg0NTIxfQ.mJ2-8Axi_SSb6JUMDwrZBzQh493Zp1WmsSN2qz9gCUc
+	
+	
+	response :
+	
+	
+	[
+    {
+        "productId": 1,
+        "name": "product 1",
+        "qty": 5,
+        "price": 3221.0
+    },
+    {
+        "productId": 2,
+        "name": "product 2",
+        "qty": 9,
+        "price": 4113.0
+    },
+    {
+        "productId": 3,
+        "name": "product 3",
+        "qty": 5,
+        "price": 2347.0
+    },
+    {
+        "productId": 4,
+        "name": "product 4",
+        "qty": 5,
+        "price": 2793.0
+    },
+    {
+        "productId": 5,
+        "name": "product 5",
+        "qty": 4,
+        "price": 3261.0
+    },
+    {
+        "productId": 6,
+        "name": "product 6",
+        "qty": 6,
+        "price": 471.0
+    },
+    {
+        "productId": 7,
+        "name": "product 7",
+        "qty": 6,
+        "price": 3099.0
+    },
+    {
+        "productId": 8,
+        "name": "product 8",
+        "qty": 7,
+        "price": 3056.0
+    },
+    {
+        "productId": 9,
+        "name": "product 9",
+        "qty": 6,
+        "price": 3969.0
+    },
+    {
+        "productId": 10,
+        "name": "product 10",
+        "qty": 9,
+        "price": 1878.0
+    },
+    {
+        "productId": 11,
+        "name": "product 11",
+        "qty": 3,
+        "price": 4163.0
+    },
+    {
+        "productId": 12,
+        "name": "product 12",
+        "qty": 0,
+        "price": 3384.0
+    },
+    {
+        "productId": 13,
+        "name": "product 13",
+        "qty": 6,
+        "price": 231.0
+    },
+    {
+        "productId": 14,
+        "name": "product 14",
+        "qty": 8,
+        "price": 2305.0
+    },
+    {
+        "productId": 15,
+        "name": "product 15",
+        "qty": 2,
+        "price": 2813.0
+    },
+    {
+        "productId": 16,
+        "name": "product 16",
+        "qty": 7,
+        "price": 3902.0
+    },
+    {
+        "productId": 17,
+        "name": "product 17",
+        "qty": 7,
+        "price": 4090.0
+    },
+    {
+        "productId": 18,
+        "name": "product 18",
+        "qty": 1,
+        "price": 1727.0
+    },
+    {
+        "productId": 19,
+        "name": "product 19",
+        "qty": 7,
+        "price": 1024.0
+    },
+    {
+        "productId": 20,
+        "name": "product 20",
+        "qty": 3,
+        "price": 1723.0
+    },
+    {
+        "productId": 21,
+        "name": "product 21",
+        "qty": 1,
+        "price": 4005.0
+    },
+    {
+        "productId": 22,
+        "name": "product 22",
+        "qty": 3,
+        "price": 1207.0
+    },
+    {
+        "productId": 23,
+        "name": "product 23",
+        "qty": 2,
+        "price": 4311.0
+    },
+    {
+        "productId": 24,
+        "name": "product 24",
+        "qty": 7,
+        "price": 4603.0
+    },
+    {
+        "productId": 25,
+        "name": "product 25",
+        "qty": 4,
+        "price": 3518.0
+    },
+    {
+        "productId": 26,
+        "name": "product 26",
+        "qty": 8,
+        "price": 4294.0
+    },
+    {
+        "productId": 27,
+        "name": "product 27",
+        "qty": 6,
+        "price": 1985.0
+    },
+    {
+        "productId": 28,
+        "name": "product 28",
+        "qty": 4,
+        "price": 3544.0
+    },
+    {
+        "productId": 29,
+        "name": "product 29",
+        "qty": 0,
+        "price": 501.0
+    },
+    {
+        "productId": 30,
+        "name": "product 30",
+        "qty": 9,
+        "price": 4760.0
+    },
+    {
+        "productId": 31,
+        "name": "product 31",
+        "qty": 4,
+        "price": 4631.0
+    },
+    {
+        "productId": 32,
+        "name": "product 32",
+        "qty": 6,
+        "price": 4116.0
+    },
+    {
+        "productId": 33,
+        "name": "product 33",
+        "qty": 1,
+        "price": 287.0
+    },
+    {
+        "productId": 34,
+        "name": "product 34",
+        "qty": 7,
+        "price": 445.0
+    },
+    {
+        "productId": 35,
+        "name": "product 35",
+        "qty": 8,
+        "price": 1238.0
+    },
+    {
+        "productId": 36,
+        "name": "product 36",
+        "qty": 2,
+        "price": 1302.0
+    },
+    {
+        "productId": 37,
+        "name": "product 37",
+        "qty": 5,
+        "price": 4378.0
+    },
+    {
+        "productId": 38,
+        "name": "product 38",
+        "qty": 8,
+        "price": 3709.0
+    },
+    {
+        "productId": 39,
+        "name": "product 39",
+        "qty": 1,
+        "price": 3179.0
+    },
+    {
+        "productId": 40,
+        "name": "product 40",
+        "qty": 8,
+        "price": 1966.0
+    },
+    {
+        "productId": 41,
+        "name": "product 41",
+        "qty": 8,
+        "price": 1974.0
+    },
+    {
+        "productId": 42,
+        "name": "product 42",
+        "qty": 3,
+        "price": 2362.0
+    },
+    {
+        "productId": 43,
+        "name": "product 43",
+        "qty": 8,
+        "price": 1683.0
+    },
+    {
+        "productId": 44,
+        "name": "product 44",
+        "qty": 0,
+        "price": 3477.0
+    },
+    {
+        "productId": 45,
+        "name": "product 45",
+        "qty": 3,
+        "price": 3984.0
+    },
+    {
+        "productId": 46,
+        "name": "product 46",
+        "qty": 1,
+        "price": 2709.0
+    },
+    {
+        "productId": 47,
+        "name": "product 47",
+        "qty": 0,
+        "price": 4002.0
+    },
+    {
+        "productId": 48,
+        "name": "product 48",
+        "qty": 9,
+        "price": 4940.0
+    },
+    {
+        "productId": 49,
+        "name": "product 49",
+        "qty": 5,
+        "price": 2319.0
+    },
+    {
+        "productId": 50,
+        "name": "product 50",
+        "qty": 5,
+        "price": 2280.0
+    },
+    {
+        "productId": 51,
+        "name": "product 51",
+        "qty": 6,
+        "price": 2181.0
+    },
+    {
+        "productId": 52,
+        "name": "product 52",
+        "qty": 6,
+        "price": 4628.0
+    },
+    {
+        "productId": 53,
+        "name": "product 53",
+        "qty": 5,
+        "price": 3618.0
+    },
+    {
+        "productId": 54,
+        "name": "product 54",
+        "qty": 4,
+        "price": 4890.0
+    },
+    {
+        "productId": 55,
+        "name": "product 55",
+        "qty": 1,
+        "price": 2879.0
+    },
+    {
+        "productId": 56,
+        "name": "product 56",
+        "qty": 9,
+        "price": 2162.0
+    },
+    {
+        "productId": 57,
+        "name": "product 57",
+        "qty": 1,
+        "price": 1377.0
+    },
+    {
+        "productId": 58,
+        "name": "product 58",
+        "qty": 9,
+        "price": 4701.0
+    },
+    {
+        "productId": 59,
+        "name": "product 59",
+        "qty": 7,
+        "price": 540.0
+    },
+    {
+        "productId": 60,
+        "name": "product 60",
+        "qty": 6,
+        "price": 4259.0
+    },
+    {
+        "productId": 61,
+        "name": "product 61",
+        "qty": 7,
+        "price": 4849.0
+    },
+    {
+        "productId": 62,
+        "name": "product 62",
+        "qty": 4,
+        "price": 1406.0
+    },
+    {
+        "productId": 63,
+        "name": "product 63",
+        "qty": 6,
+        "price": 3932.0
+    },
+    {
+        "productId": 64,
+        "name": "product 64",
+        "qty": 1,
+        "price": 2713.0
+    },
+    {
+        "productId": 65,
+        "name": "product 65",
+        "qty": 3,
+        "price": 4117.0
+    },
+    {
+        "productId": 66,
+        "name": "product 66",
+        "qty": 8,
+        "price": 3526.0
+    },
+    {
+        "productId": 67,
+        "name": "product 67",
+        "qty": 4,
+        "price": 4642.0
+    },
+    {
+        "productId": 68,
+        "name": "product 68",
+        "qty": 0,
+        "price": 1738.0
+    },
+    {
+        "productId": 69,
+        "name": "product 69",
+        "qty": 4,
+        "price": 270.0
+    },
+    {
+        "productId": 70,
+        "name": "product 70",
+        "qty": 9,
+        "price": 4457.0
+    },
+    {
+        "productId": 71,
+        "name": "product 71",
+        "qty": 5,
+        "price": 4922.0
+    },
+    {
+        "productId": 72,
+        "name": "product 72",
+        "qty": 2,
+        "price": 1878.0
+    },
+    {
+        "productId": 73,
+        "name": "product 73",
+        "qty": 0,
+        "price": 1863.0
+    },
+    {
+        "productId": 74,
+        "name": "product 74",
+        "qty": 3,
+        "price": 1500.0
+    },
+    {
+        "productId": 75,
+        "name": "product 75",
+        "qty": 9,
+        "price": 543.0
+    },
+    {
+        "productId": 76,
+        "name": "product 76",
+        "qty": 6,
+        "price": 2692.0
+    },
+    {
+        "productId": 77,
+        "name": "product 77",
+        "qty": 7,
+        "price": 1950.0
+    },
+    {
+        "productId": 78,
+        "name": "product 78",
+        "qty": 7,
+        "price": 1037.0
+    },
+    {
+        "productId": 79,
+        "name": "product 79",
+        "qty": 4,
+        "price": 3793.0
+    },
+    {
+        "productId": 80,
+        "name": "product 80",
+        "qty": 1,
+        "price": 1458.0
+    },
+    {
+        "productId": 81,
+        "name": "product 81",
+        "qty": 4,
+        "price": 4319.0
+    },
+    {
+        "productId": 82,
+        "name": "product 82",
+        "qty": 3,
+        "price": 4705.0
+    },
+    {
+        "productId": 83,
+        "name": "product 83",
+        "qty": 6,
+        "price": 999.0
+    },
+    {
+        "productId": 84,
+        "name": "product 84",
+        "qty": 2,
+        "price": 2151.0
+    },
+    {
+        "productId": 85,
+        "name": "product 85",
+        "qty": 3,
+        "price": 1899.0
+    },
+    {
+        "productId": 86,
+        "name": "product 86",
+        "qty": 5,
+        "price": 958.0
+    },
+    {
+        "productId": 87,
+        "name": "product 87",
+        "qty": 6,
+        "price": 1389.0
+    },
+    {
+        "productId": 88,
+        "name": "product 88",
+        "qty": 9,
+        "price": 3355.0
+    },
+    {
+        "productId": 89,
+        "name": "product 89",
+        "qty": 0,
+        "price": 3160.0
+    },
+    {
+        "productId": 90,
+        "name": "product 90",
+        "qty": 0,
+        "price": 2109.0
+    },
+    {
+        "productId": 91,
+        "name": "product 91",
+        "qty": 5,
+        "price": 2195.0
+    },
+    {
+        "productId": 92,
+        "name": "product 92",
+        "qty": 9,
+        "price": 2941.0
+    },
+    {
+        "productId": 93,
+        "name": "product 93",
+        "qty": 5,
+        "price": 4906.0
+    },
+    {
+        "productId": 94,
+        "name": "product 94",
+        "qty": 2,
+        "price": 4023.0
+    },
+    {
+        "productId": 95,
+        "name": "product 95",
+        "qty": 9,
+        "price": 630.0
+    },
+    {
+        "productId": 96,
+        "name": "product 96",
+        "qty": 0,
+        "price": 571.0
+    },
+    {
+        "productId": 97,
+        "name": "product 97",
+        "qty": 7,
+        "price": 2877.0
+    },
+    {
+        "productId": 98,
+        "name": "product 98",
+        "qty": 0,
+        "price": 2848.0
+    },
+    {
+        "productId": 99,
+        "name": "product 99",
+        "qty": 6,
+        "price": 318.0
+    },
+    {
+        "productId": 100,
+        "name": "product 100",
+        "qty": 9,
+        "price": 1538.0
+    }
+]
+	
